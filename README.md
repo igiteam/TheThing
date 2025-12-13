@@ -2,14 +2,12 @@
 
 A Quake III Arena port designed for running in vanilla JavaScript pre-ECMAScript 2015 (no WebAssembly). Simply open the link below, click the red icon, and select all the `PK3` files and `q3config.cfg` (optional); all files will be loaded and booted automatically. If you have the commercial version and you want to play it, you need to have the Point Release 1.32 version, this means than you need to have and select at least the following files: `pak0.pk3`,  `pak1.pk3`, `pak2.pk3`, `pak3.pk3` and `pak4.pk3`. The multiplayer mode is not available in this project, for multiplayer check the original project link at the bottom of this document.
 
+![alt screenshot](https://lrusso.github.io/Quake3/Quake3.jpg)
+
 ## Links:
 
 - [Quake III Arena](https://lrusso.github.io/Quake3/Quake3.htm)
 - [Quake III Arena online demo](https://lrusso.github.io/Quake3/Quake3.htm?demo)
-
-## Screenshots:
-
-![alt screenshot1](https://lrusso.github.io/Quake3/Quake3.jpg)
 
 ## How to use it:
 

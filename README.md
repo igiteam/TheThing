@@ -32,7 +32,7 @@ embedQuake3({
 | Parameter          |    Type     | Required | Default value | Description               |
 | :----------------- | :---------: | :------: | :-----------: | :------------------------ |
 | container          |   string    |   yes    |       –       | Target element ID.        |
-| files              |   Array     |   yes    |       –       | Array of File or Blob (PK3 files and optional CFG file). |
+| files              |   Array     |   yes    |       –       | Files or Blobs (PK3s and optional CFG file). |
 | cbStarted          |  function   |    no    |       -       | Called on emulator start. |
 
 ## Special keys:

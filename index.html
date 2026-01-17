@@ -319,6 +319,27 @@
       </svg>
     </button>
     <input type="file" id="file-input" multiple>
+    <!-- Add this hidden div inside your #container -->
+    <div id="os-buttons" style="display: none; position: fixed; bottom: 10px; left: 10px; z-index: 10000;">
+      <button id="macos-btn" class="os-btn"
+        style="background: transparent; border: none; padding: 0; margin-right: 10px;">
+        <img src="images/macos.png" alt="macOS" style="width: 32px; height: 32px;">
+      </button>
+      <button id="windows-btn" class="os-btn" style="background: transparent; border: none; padding: 0;">
+        <img src="images/windows.png" alt="Windows" style="width: 32px; height: 32px;">
+      </button>
+    </div>
+
+    <div id="tech-buttons" style="display: none; position: fixed; bottom: 10px; right: 10px; z-index: 10000;">
+      <button id="q3-btn" class="tech-btn"
+        style="background: transparent; border: none; padding: 0; margin-right: 10px;">
+        <img src="images/q3.png" alt="Quake 3" style="width: 32px; height: 32px;">
+      </button>
+      <button id="js-btn" class="tech-btn" style="background: transparent; border: none; padding: 0;">
+        <img src="images/js.png" alt="JavaScript" style="width: 32px; height: 32px;">
+      </button>
+    </div>
+
   </div>
   <!-- Quake3-engine-js -->
   <script src="Quake3.min.js"></script>
@@ -434,6 +455,121 @@
         })
       }
     })
+  </script>
+  <script>
+      // Add this script after your existing game script
+      (function () {
+        'use strict';
+
+        // Get references to the button containers
+        const osButtons = document.getElementById('os-buttons');
+        const techButtons = document.getElementById('tech-buttons');
+
+        // Check if elements exist
+        if (!osButtons || !techButtons) {
+          console.error('Button containers not found');
+          return;
+        }
+
+        // Variables for hover detection
+        let showButtons = false;
+        let hoverTimeout = null;
+        const BOTTOM_THRESHOLD = 0.3; // 30% from bottom
+
+        // Function to check if mouse is in bottom 30% of screen
+        function isInBottomZone(y) {
+          const windowHeight = window.innerHeight;
+          const threshold = windowHeight * (1 - BOTTOM_THRESHOLD);
+          return y >= threshold;
+        }
+
+        // Function to show buttons
+        function showAllButtons() {
+          if (!showButtons) {
+            showButtons = true;
+            osButtons.style.display = 'block';
+            techButtons.style.display = 'block';
+          }
+        }
+
+        // Function to hide buttons
+        function hideAllButtons() {
+          if (showButtons) {
+            showButtons = false;
+            osButtons.style.display = 'none';
+            techButtons.style.display = 'none';
+          }
+        }
+
+        // Mouse move handler
+        function handleMouseMove(e) {
+          const mouseY = e.clientY;
+
+          if (isInBottomZone(mouseY)) {
+            // Mouse is in bottom zone, show buttons
+            clearTimeout(hoverTimeout);
+            showAllButtons();
+
+            // Set timeout to hide buttons when mouse leaves bottom zone
+            hoverTimeout = setTimeout(() => {
+              if (!isInBottomZone(mouseY)) {
+                hideAllButtons();
+              }
+            }, 500);
+          } else {
+            // Mouse is NOT in bottom zone
+            clearTimeout(hoverTimeout);
+            hideAllButtons();
+          }
+        }
+
+        // Mouse leave handler for window
+        function handleMouseLeave() {
+          clearTimeout(hoverTimeout);
+          hideAllButtons();
+        }
+
+        // Button click handlers (empty for now)
+        function setupButtonHandlers() {
+          const buttons = [
+            { id: 'macos-btn', name: 'macOS' },
+            { id: 'windows-btn', name: 'Windows' },
+            { id: 'q3-btn', name: 'Quake 3' },
+            { id: 'js-btn', name: 'JavaScript' }
+          ];
+
+          buttons.forEach(button => {
+            const btnElement = document.getElementById(button.id);
+            if (btnElement) {
+              btnElement.addEventListener('click', function (e) {
+                e.preventDefault();
+                console.log(`${button.name} button clicked`);
+                // Empty click handler for now
+              });
+            }
+          });
+        }
+
+        // Initialize everything when DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+          setupButtonHandlers();
+
+          // Add event listeners
+          document.addEventListener('mousemove', handleMouseMove);
+          document.addEventListener('mouseleave', handleMouseLeave);
+
+          // Also hide buttons on scroll (optional)
+          window.addEventListener('scroll', hideAllButtons);
+        });
+
+        // Clean up on page unload
+        window.addEventListener('unload', function () {
+          document.removeEventListener('mousemove', handleMouseMove);
+          document.removeEventListener('mouseleave', handleMouseLeave);
+          window.removeEventListener('scroll', hideAllButtons);
+        });
+
+      })();
   </script>
 </body>
 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Windows Form Replica</title>
+
+    <style>
+        body {
+            background: #dcdcdc;
+            font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        /* Window container */
+        .window {
+            width: 640px;
+            height: 420px;
+            border: 1px solid #8a9bb5;
+            border-radius: 4px;
+            background: #ffffff;
+            box-shadow: 0 0 0 1px #c9d3e1 inset;
+            margin: 0 auto;
+        }
+
+        /* Title bar */
+        .title-bar {
+            height: 34px;
+            background: linear-gradient(#eaf2fb, #cfdff2);
+            border-bottom: 1px solid #9db2ce;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            box-sizing: border-box;
+        }
+
+        /* Left side */
+        .title-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .app-icon {
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(#ffd700, #ffb700);
+            border: 1px solid #999;
+        }
+
+        /* Right side buttons */
+        .title-right {
+            display: flex;
+            gap: 4px;
+        }
+
+        .win-btn {
+            width: 32px;
+            height: 22px;
+            border: 1px solid #7f9db9;
+            background: linear-gradient(#f5f8fc, #dbe7f6);
+            color: #000;
+            font-size: 14px;
+            line-height: 18px;
+            cursor: default;
+            padding: 0;
+        }
+
+        .win-btn.close {
+            background: linear-gradient(#f8dede, #e09b9b);
+            border-color: #b75a5a;
+        }
+
+        /* Client area */
+        .window-body {
+            height: calc(100% - 34px);
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Center text */
+        .message {
+            color: red;
+            font-size: 28px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-left">
+                <div class="app-icon"></div>
+            </div>
+
+            <div class="title-right">
+                <button class="win-btn minimize">–</button>
+                <button class="win-btn maximize">□</button>
+                <button class="win-btn close">×</button>
+            </div>
+        </div>
+
+        <div class="window-body">
+            <div class="message">
+                窗体设计也不能正常显示
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

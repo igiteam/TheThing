@@ -82,7 +82,6 @@
       background-image: url("https://cdn.sdappnet.cloud/rtx/images/TheThing.png");
       cursor: url("https://raw.githubusercontent.com/ProjectIGIRemakeTeam/TheThing/refs/heads/master/images/cursor.png"), default !important;
       /* cursor from here - it's set below */
-      border: 1px solid black !important;
     }
 
     .blizzard {
@@ -381,7 +380,7 @@
     var pleaseWait = document.querySelector(".pleasewait")
 
     window.addEventListener("load", function () {
-      if (window.top == window.self) {
+      if (window.top == window.self || true) {
         pleaseWait.style.display = "none"
         container.style.display = "block"
 

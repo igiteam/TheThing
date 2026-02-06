@@ -1,0 +1,26 @@
+<!-- File: Scripts/Entities/FirstPersonLegs.xml -->
+<Entity name="FirstPersonLegs" script="Scripts/Game/FirstPersonLegs.lua">
+    <Properties>
+        <Property name="bEnabled" type="bool" default="1">
+            <Description>Enable first-person legs</Description>
+        </Property>
+        <Property name="fPulseRate" type="float" default="0.01">
+            <Description>Update rate in seconds</Description>
+        </Property>
+        <Property name="vOffset" type="Vec3" default="0,-0.2,-0.5">
+            <Description>Position offset from player</Description>
+        </Property>
+    </Properties>
+    
+    <Events>
+        <Event name="Enable">
+            <Description>Enable first-person legs</Description>
+        </Event>
+        <Event name="Disable">
+            <Description>Disable first-person legs</Description>
+        </Event>
+        <Event name="Toggle">
+            <Description>Toggle first-person legs</Description>
+        </Event>
+    </Events>
+</Entity>
